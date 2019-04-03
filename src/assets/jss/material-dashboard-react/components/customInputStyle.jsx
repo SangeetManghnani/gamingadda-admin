@@ -60,7 +60,7 @@ const customInputStyle = {
   },
   formControl: {
     paddingBottom: "10px",
-    margin: "27px 0 0 0",
+    margin: "0 0 0 0",
     position: "relative",
     verticalAlign: "unset"
   }

@@ -39,20 +39,23 @@ const styles = {
     textDecoration: "none"
   },
   radioGroup: {
-      display:'flex',
-      flexDirection: 'row',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  prizesContainer: {
+    marginTop: "1rem",
   }
 };
 class CreateMatch extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            value: 'squad',
-          };
-    }
-    handleChange = event => {
-        this.setState({ value: event.target.value });
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'squad',
+    };
+  }
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+  };
   render() {
     const { classes } = this.props;
     return (
@@ -93,15 +96,6 @@ class CreateMatch extends React.Component {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={3}>
                     <CustomInput
-                      labelText="Per Kill"
-                      id="perKill"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={3}>
-                    <CustomInput
                       labelText="Map"
                       id="map"
                       formControlProps={{
@@ -118,21 +112,41 @@ class CreateMatch extends React.Component {
                       }}
                     />
                   </GridItem>
-                </GridContainer>
-                <GridContainer>
-                  <GridItem xs={12} sm={12} md={12}>
-                    <InputLabel style={{ color: "#AAAAAA" }}>
-                      About me
-                    </InputLabel>
+                  <GridItem xs={12} sm={12} md={3}>
                     <CustomInput
-                      labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                      id="about-me"
+                      labelText="Per Kill"
+                      id="perKill"
                       formControlProps={{
                         fullWidth: true
                       }}
-                      inputProps={{
-                        multiline: true,
-                        rows: 5
+                    />
+                  </GridItem>
+                </GridContainer>
+                <GridContainer className={classes.prizesContainer}>
+                  <GridItem xs={12} sm={12} md={3}>
+                    <CustomInput
+                      labelText="Winner"
+                      id="winner"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={3}>
+                    <CustomInput
+                      labelText="Runner"
+                      id="runner"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={3}>
+                    <CustomInput
+                      labelText="Entry Fee"
+                      id="entryFee"
+                      formControlProps={{
+                        fullWidth: true
                       }}
                     />
                   </GridItem>
