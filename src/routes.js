@@ -27,14 +27,6 @@ const dashboardRoutes = [{
         icon: Person,
         component: CreateMatch,
         layout: "/admin"
-    },
-    {
-        path: "/table",
-        name: "Table List",
-        rtlName: "قائمة الجدول",
-        icon: "content_paste",
-        component: TableList,
-        layout: "/admin"
     }
 ];
 
