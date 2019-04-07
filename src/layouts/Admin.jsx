@@ -2,6 +2,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { bindActionCreators } from "redux";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -21,6 +24,8 @@ import getMatchesFromDb from "utils/firebase/read";
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
 
+import { setMatches } from "redux/actions/MatchActions";
+
 // const switchRoutes = (
 //   <Switch>
 //     {routes.map((prop, key) => {
@@ -36,6 +41,14 @@ import logo from "assets/img/reactlogo.png";
 //     })}
 //   </Switch>
 // );
+
+function mapStateToProps(state) {
+  return { matches: state.matchesReducer };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ setMatches }, dispatch);
+}
 
 const switchRoutes = extraProps => {
   return (
@@ -88,15 +101,19 @@ class Dashboard extends React.Component {
     }
     window.addEventListener("resize", this.resizeFunction);
     getMatchesFromDb().then(data => {
-      if (this.state.matches.length <= 0 && data.length > 0) {
-        const matches = Object.assign({}, data);
-        this.setState({
-          matches
-        });
-      }
+      this.props.setMatches(data);
     });
+    // getMatchesFromDb().then(data => {
+    //   if (this.state.matches.length <= 0 && data.length > 0) {
+    //     const matches = Object.assign({}, data);
+    //     this.setState({
+    //       matches
+    //     });
+    //   }
+    // });
   }
   componentDidUpdate(e) {
+    console.log(this.props.matches);
     if (e.history.location.pathname !== e.location.pathname) {
       this.refs.mainPanel.scrollTop = 0;
       if (this.state.mobileOpen) {
@@ -155,4 +172,10 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Dashboard);
+export default compose(
+  connect(
+    mapStateToProps,
+    matchDispatchToProps
+  ),
+  withStyles(dashboardStyle)
+)(Dashboard);

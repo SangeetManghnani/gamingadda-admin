@@ -7,6 +7,8 @@ import purple from "@material-ui/core/colors/purple";
 import orange from "@material-ui/core/colors/orange";
 import { MuiPickersUtilsProvider } from "material-ui-pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import { Provider } from "react-redux";
+import configureStore from "./store";
 
 // core components
 import Admin from "layouts/Admin.jsx";
@@ -22,15 +24,17 @@ const theme = createMuiTheme({
 const hist = createBrowserHistory();
 
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Router history={hist}>
-        <Switch>
-          <Route path="/admin" component={Admin} />
-          <Redirect from="/" to="/admin/matches" />
-        </Switch>
-      </Router>
-    </MuiPickersUtilsProvider>
-  </MuiThemeProvider>,
+  <Provider store={configureStore()}>
+    <MuiThemeProvider theme={theme}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Router history={hist}>
+          <Switch>
+            <Route path="/admin" component={Admin} />
+            <Redirect from="/" to="/admin/matches" />
+          </Switch>
+        </Router>
+      </MuiPickersUtilsProvider>
+    </MuiThemeProvider>
+  </Provider>,
   document.getElementById("root")
 );
