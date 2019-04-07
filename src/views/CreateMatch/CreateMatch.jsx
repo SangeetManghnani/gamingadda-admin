@@ -17,11 +17,6 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 
-// import { DatePicker } from "material-ui-pickers";
-// import DateFnsUtils from "@date-io/date-fns";
-// import { MuiPickersUtilsProvider } from "material-ui-pickers";
-// import RadioGroup from "@material-ui/core/RadioGroup";
-
 import DatePickerMaterial from "components/DatePicker/DatePicker.jsx";
 
 import { Formik, Field, Form } from "formik";
@@ -33,6 +28,7 @@ import MuiTextField from "@material-ui/core/TextField";
 import CustomMaterialInput from "components/CustomMaterialInput/CustomMaterialInput";
 
 import CreateMatchSchema from "utils/CreateMatchValidation";
+import createMatchInDb from "utils/firebase/write";
 
 const styles = {
   cardTitleWhite: {
@@ -44,8 +40,11 @@ const styles = {
     marginBottom: "3px",
     textDecoration: "none"
   },
-  gridMargin: {
+  gridMargin1: {
     marginTop: "1rem"
+  },
+  gridMargin2: {
+    marginTop: "2rem"
   },
   radioElement: {
     display: "flex",
@@ -91,6 +90,7 @@ class CreateMatch extends React.Component {
                 setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
                   setSubmitting(false);
+                  createMatchInDb("123", values);
                 }, 400);
               }}
             >
@@ -165,7 +165,7 @@ class CreateMatch extends React.Component {
                           />
                         </GridItem>
                       </GridContainer>
-                      <GridContainer className={classes.prizesContainer}>
+                      <GridContainer className={classes.gridMargin1}>
                         <GridItem xs={12} sm={6} md={3}>
                           <Field
                             type="text"
@@ -194,7 +194,7 @@ class CreateMatch extends React.Component {
                           />
                         </GridItem>
                       </GridContainer>
-                      <GridContainer className={classes.gridMargin}>
+                      <GridContainer className={classes.gridMargin2}>
                         <GridItem xs={12} sm={12} md={12}>
                           <Field
                             type="text"

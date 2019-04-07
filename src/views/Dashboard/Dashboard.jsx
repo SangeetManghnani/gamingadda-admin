@@ -17,8 +17,15 @@ import { Row, Col } from "react-flexbox-grid";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
 class Dashboard extends React.Component {
-  state = {
-    value: 0
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0
+    };
+  }
+
+  componentDidMount = () => {
+    console.log(this.props.route);
   };
   handleChange = (event, value) => {
     this.setState({ value });

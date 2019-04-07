@@ -13,7 +13,7 @@ import TableList from "views/TableList/TableList.jsx";
 import CreateMatch from "views/CreateMatch/CreateMatch.jsx";
 
 const dashboardRoutes = [{
-        path: "/dashboard",
+        path: "/matches",
         name: "Matches",
         rtlName: "لوحة القيادة",
         icon: Dashboard,

@@ -14,7 +14,6 @@
     <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/apple-icon.png" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" />
 
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -29,6 +28,21 @@
           Learn how to configure a non-root public URL by running `npm run build`.
         -->
     <title>Gaming adda Admin</title>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAJhemM9Lf5fT5m1kTopDhRy_SaZ43LjqA",
+            authDomain: "gamingadda-9fdba.firebaseapp.com",
+            databaseURL: "https://gamingadda-9fdba.firebaseio.com",
+            projectId: "gamingadda-9fdba",
+            storageBucket: "gamingadda-9fdba.appspot.com",
+            messagingSenderId: "283073196427"
+        };
+        firebase.initializeApp(config);
+    </script>
 </head>
 
 <body>
