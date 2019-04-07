@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { bindActionCreators } from "redux";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -18,13 +17,12 @@ import Sidebar from "components/Sidebar/Sidebar.jsx";
 import routes from "routes.js";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
-import getMatchesFromDb from "utils/firebase/read";
 
 // side bar image change here
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
 
-import { setMatches } from "redux/actions/MatchActions";
+// import { setMatches, setLoadingMatches } from "redux/actions/MatchActions";
 
 // const switchRoutes = (
 //   <Switch>
@@ -42,13 +40,13 @@ import { setMatches } from "redux/actions/MatchActions";
 //   </Switch>
 // );
 
-function mapStateToProps(state) {
-  return { matches: state.matchesReducer };
-}
+// function mapStateToProps(state) {
+//   return { matches: state.matchesReducer };
+// }
 
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ setMatches }, dispatch);
-}
+// function matchDispatchToProps(dispatch) {
+//   return bindActionCreators({ setMatches, setLoadingMatches }, dispatch);
+// }
 
 const switchRoutes = extraProps => {
   return (
@@ -77,8 +75,7 @@ class Dashboard extends React.Component {
       color: "orange",
       hasImage: true,
       fixedClasses: "dropdown show",
-      mobileOpen: false,
-      matches: []
+      mobileOpen: false
     };
   }
   handleDrawerToggle = () => {
@@ -100,16 +97,10 @@ class Dashboard extends React.Component {
       const ps = new PerfectScrollbar(this.refs.mainPanel);
     }
     window.addEventListener("resize", this.resizeFunction);
-    getMatchesFromDb().then(data => {
-      this.props.setMatches(data);
-    });
+    // this.props.setLoadingMatches(true);
     // getMatchesFromDb().then(data => {
-    //   if (this.state.matches.length <= 0 && data.length > 0) {
-    //     const matches = Object.assign({}, data);
-    //     this.setState({
-    //       matches
-    //     });
-    //   }
+    //   this.props.setMatches(data);
+    //   this.props.setLoadingMatches(false);
     // });
   }
   componentDidUpdate(e) {
@@ -154,13 +145,6 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes("")}</div>
             )}
           </div>
-          {/* {this.getRoute() ? (
-            <div className={classes.content}>
-              <div className={classes.container}>{switchRoutes("")}</div>
-            </div>
-          ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )} */}
           {this.getRoute() ? <Footer /> : null}
         </div>
       </div>
@@ -172,10 +156,12 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default compose(
-  connect(
-    mapStateToProps,
-    matchDispatchToProps
-  ),
-  withStyles(dashboardStyle)
-)(Dashboard);
+// export default compose(
+//   connect(
+//     mapStateToProps,
+//     matchDispatchToProps
+//   ),
+//   withStyles(dashboardStyle)
+// )(Dashboard);
+
+export default withStyles(dashboardStyle)(Dashboard);

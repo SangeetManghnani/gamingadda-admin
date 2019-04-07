@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -13,6 +14,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+import Loader from "components/Loader/Loader.jsx";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
@@ -22,6 +24,7 @@ import DatePickerMaterial from "components/DatePicker/DatePicker.jsx";
 import { Formik, Field, Form } from "formik";
 import { TextField } from "formik-material-ui";
 import { RadioGroup } from "formik-material-ui";
+// import { compose } from "redux";
 
 import MuiTextField from "@material-ui/core/TextField";
 
@@ -52,6 +55,7 @@ const styles = {
     width: "100%"
   }
 };
+
 class CreateMatch extends React.Component {
   constructor(props) {
     super(props);
@@ -61,12 +65,6 @@ class CreateMatch extends React.Component {
   }
   handleChange = event => {
     this.setState({ value: event.target.value });
-  };
-  submit = (values, pristineValues) => {
-    console.log(values);
-  };
-  submitSecondForm = model => {
-    console.log(model);
   };
   render() {
     const { classes } = this.props;
@@ -87,11 +85,16 @@ class CreateMatch extends React.Component {
               }}
               validationSchema={CreateMatchSchema}
               onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                  createMatchInDb("123", values);
-                }, 400);
+                createMatchInDb("123", values)
+                  .then(result => {
+                    // use notification and change page
+                    setSubmitting(false);
+                    this.props.history.push("/admin/matches");
+                    console.log(result.status);
+                  })
+                  .catch(err => {
+                    // use notification and set submitting fale
+                  });
               }}
             >
               {({
@@ -104,6 +107,7 @@ class CreateMatch extends React.Component {
                 isSubmitting
               }) => (
                 <Card>
+                  {isSubmitting ? <Loader /> : null}
                   <Form onSubmit={handleSubmit}>
                     <CardHeader color="primary">
                       <h4 className={classes.cardTitleWhite}>
@@ -225,5 +229,10 @@ class CreateMatch extends React.Component {
     );
   }
 }
+
+// export default compose(
+//   withRouter,
+//   withStyles(styles)
+// )(CreateMatch);
 
 export default withStyles(styles)(CreateMatch);

@@ -8,6 +8,13 @@ export function setMatches(matches) {
     }
 }
 
+export function setLoadingMatches(loading) {
+    return {
+        type: 'FETCHING_MATCHES',
+        loading
+    }
+}
+
 // export function matchesFetchedSuccessfully(attributes = []) {
 //     return {
 //         type: ActionTypes.FETCHED_ALL_MATCHES_SUCCESS,

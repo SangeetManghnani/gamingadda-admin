@@ -130,7 +130,7 @@ class HeaderLinks extends React.Component {
             )}
           </Poppers>
         </div> */}
-        <Button
+        {/* <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
@@ -141,7 +141,7 @@ class HeaderLinks extends React.Component {
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>
-        </Button>
+        </Button> */}
       </div>
     );
   }

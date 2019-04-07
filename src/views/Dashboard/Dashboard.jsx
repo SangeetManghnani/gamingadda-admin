@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { bindActionCreators } from "redux";
 // @material-ui/core
 import withStyles from "@material-ui/core/styles/withStyles";
 import Icon from "@material-ui/core/Icon";
@@ -15,11 +16,22 @@ import CardIcon from "components/Card/CardIcon.jsx";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Row, Col } from "react-flexbox-grid";
+import Loader from "components/Loader/Loader.jsx";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
+import { setMatches, setLoadingMatches } from "redux/actions/MatchActions";
+
+import getMatchesFromDb from "utils/firebase/read";
+
 function mapStateToProps(state) {
-  return { matches: state.matchesReducer.matches };
+  return {
+    matches: state.matchesReducer.matches,
+    loadingMatches: state.matchesReducer.fetchingMatches
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setMatches, setLoadingMatches }, dispatch);
 }
 class Dashboard extends React.Component {
   constructor(props) {
@@ -32,7 +44,11 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.matches);
+    this.props.setLoadingMatches(true);
+    getMatchesFromDb().then(data => {
+      this.props.setMatches(data);
+      this.props.setLoadingMatches(false);
+    });
   };
   handleChange = (event, value) => {
     this.setState({ value });
@@ -119,6 +135,7 @@ class Dashboard extends React.Component {
     const { classes } = this.props;
     return (
       <div>
+        {this.props.loadingMatches ? <Loader /> : null}
         <GridContainer>{this.renderMatchCards(classes)}</GridContainer>
       </div>
     );
@@ -130,6 +147,9 @@ Dashboard.propTypes = {
 };
 
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withStyles(dashboardStyle)
 )(Dashboard);
