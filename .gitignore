@@ -2,3 +2,7 @@ build/
 node_modules/
 documentation/
 .vscode/
+firebase.json
+.firebase/
+.firebaserc
+package-lock.json
