@@ -19,8 +19,9 @@ import routes from "routes.js";
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
 // side bar image change here
-import image from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
+import image from "assets/img/pubg_bg.jpg";
+// import logo from "assets/img/reactlogo.png";
+import logo from "assets/img/logo2.svg";
 
 // import { setMatches, setLoadingMatches } from "redux/actions/MatchActions";
 
@@ -121,7 +122,6 @@ class Dashboard extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={routes}
-          logoText={"Gaming Adda"}
           logo={logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}

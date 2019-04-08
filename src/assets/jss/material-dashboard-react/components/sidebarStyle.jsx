@@ -79,7 +79,8 @@ const sidebarStyle = theme => ({
     ...defaultFont,
     textTransform: "uppercase",
     padding: "5px 0",
-    display: "block",
+    display: "flex",
+    justifyContent: "center",
     fontSize: "18px",
     textAlign: "left",
     fontWeight: "400",
@@ -94,17 +95,14 @@ const sidebarStyle = theme => ({
     textAlign: "right"
   },
   logoImage: {
-    width: "30px",
-    display: "inline-block",
+    alignItems: "center",
+    display: "flex",
     maxHeight: "30px",
     marginLeft: "10px",
     marginRight: "15px"
   },
   img: {
-    width: "35px",
-    top: "22px",
-    position: "absolute",
-    verticalAlign: "middle",
+    width: "100%",
     border: "0"
   },
   background: {
@@ -116,7 +114,7 @@ const sidebarStyle = theme => ({
     top: "0",
     left: "0",
     backgroundSize: "cover",
-    backgroundPosition: "center center",
+    backgroundPosition: "10% 10%",
     "&:after": {
       position: "absolute",
       zIndex: "3",

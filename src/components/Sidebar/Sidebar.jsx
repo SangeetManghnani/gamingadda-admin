@@ -64,9 +64,7 @@ const Sidebar = ({ ...props }) => {
                 />
               )}
               <ListItemText
-                primary={
-                  props.rtlActive ? prop.rtlName : prop.name
-                }
+                primary={props.rtlActive ? prop.rtlName : prop.name}
                 className={classNames(classes.itemText, whiteFontClasses, {
                   [classes.itemTextRTL]: props.rtlActive
                 })}
@@ -81,7 +79,7 @@ const Sidebar = ({ ...props }) => {
   var brand = (
     <div className={classes.logo}>
       <a
-        href="https://www.creative-tim.com"
+        href=""
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}
