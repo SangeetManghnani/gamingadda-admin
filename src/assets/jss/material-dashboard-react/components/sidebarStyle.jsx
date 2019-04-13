@@ -12,7 +12,8 @@ import {
   whiteColor,
   grayColor,
   blackColor,
-  hexToRgb
+  hexToRgb,
+  themeDarkOne
 } from "assets/jss/material-dashboard-react.jsx";
 
 const sidebarStyle = theme => ({
@@ -122,7 +123,7 @@ const sidebarStyle = theme => ({
       height: "100%",
       content: '""',
       display: "block",
-      background: blackColor,
+      background: themeDarkOne.primaryColor[0],
       opacity: ".8"
     }
   },
@@ -235,7 +236,7 @@ const sidebarStyle = theme => ({
         ",.2)"
     }
   },
-  orange: {
+  themeYellow: {
     backgroundColor: warningColor[0],
     boxShadow:
       "0 12px 20px -10px rgba(" +
@@ -255,6 +256,32 @@ const sidebarStyle = theme => ({
         ",.12), 0 7px 8px -5px rgba(" +
         hexToRgb(warningColor[0]) +
         ",.2)"
+    }
+  },
+  orange: {
+    backgroundColor: themeDarkOne.highlightColor[0],
+    // boxShadow:
+    // "0 12px 20px -10px rgba(" +
+    // hexToRgb(themeDarkOne.highlightColor[0]) +
+    // ",.28), 0 4px 20px 0 rgba(" +
+    // hexToRgb(blackColor) +
+    // ",.12), 0 7px 8px -5px rgba(" +
+    // hexToRgb(themeDarkOne.highlightColor[0]) +
+    // ",.2)",
+    "&:hover": {
+      backgroundColor: themeDarkOne.borderColor[0],
+      // boxShadow:
+      //   "0 12px 20px -10px rgba(" +
+      //   hexToRgb(themeDarkOne.highlightColor[0]) +
+      //   ",.28), 0 4px 20px 0 rgba(" +
+      //   hexToRgb(blackColor) +
+      //   ",.12), 0 7px 8px -5px rgba(" +
+      //   hexToRgb(themeDarkOne.highlightColor[0]) +
+      //   ",.2)",
+      color: themeDarkOne.primaryColor[0]
+    },
+    "& .Sidebar-itemText-19": {
+      fontWeight: 500
     }
   },
   red: {

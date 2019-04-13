@@ -70,7 +70,37 @@ const defaultFont = {
   lineHeight: "1.5em"
 };
 
-const primaryColor = ["#9c27b0", "#ab47bc", "#8e24aa", "#af2cc5"];
+const primaryColor = ["#181827"];
+const secondaryColor = ["#ffd400"];
+const textColor = ["#ffffff"];
+const bgColor = ["#939598"];
+
+const themeDarkOne = {
+  primaryColor: ["#181827"],
+  secondaryColor: ["#ffd400"],
+  highlightColor: ["#ddb800"],
+  borderColor: ["#ddb800"],
+  textColor: ["#d6d6d6"],
+  bgColor: ["#939598"]
+};
+
+const themeDarkTwo = {
+  primaryColor: ["#13173c"],
+  secondaryColor: ["#1cc86b"],
+  highlightColor: ["#5f57ca"],
+  textColor: ["#ffffff"],
+  bgColor: ["#272c49"]
+};
+
+const themeLightOne = {
+  primaryColor: ["#ffffff"],
+  secondaryColor: ["#9c27b0"],
+  highlightColor: ["#ff9800"],
+  textColor: ["#000"],
+  bgColor: ["#ffffff"]
+};
+
+// const primaryColor = ["#9c27b0", "#ab47bc", "#8e24aa", "#af2cc5"];
 const warningColor = ["#ff9800", "#ffa726", "#fb8c00", "#ffa21a"];
 const dangerColor = ["#f44336", "#ef5350", "#e53935", "#f55a4e"];
 const successColor = ["#4caf50", "#66bb6a", "#43a047", "#5cb860"];
@@ -109,7 +139,7 @@ const primaryBoxShadow = {
     "0 4px 20px 0 rgba(" +
     hexToRgb(blackColor) +
     ",.14), 0 7px 10px -5px rgba(" +
-    hexToRgb(primaryColor[0]) +
+    hexToRgb(themeDarkOne.primaryColor[0]) +
     ",.4)"
 };
 const infoBoxShadow = {
@@ -174,8 +204,9 @@ const infoCardHeader = {
   ...infoBoxShadow
 };
 const primaryCardHeader = {
-  background:
-    "linear-gradient(60deg, " + primaryColor[1] + ", " + primaryColor[2] + ")",
+  // background:
+  //   "linear-gradient(60deg, " + primaryColor[0] + ", " + primaryColor[0] + ")",
+  background: themeDarkOne.highlightColor[0],
   ...primaryBoxShadow
 };
 const roseCardHeader = {
@@ -225,9 +256,10 @@ const defaultBoxShadow = {
 };
 
 const title = {
-  color: grayColor[2],
+  color: themeDarkOne.primaryColor[0],
+  fontSize: "0.875rem",
   textDecoration: "none",
-  fontWeight: "300",
+  fontWeight: "600",
   marginTop: "30px",
   marginBottom: "25px",
   minHeight: "32px",
@@ -272,6 +304,9 @@ export {
   card,
   defaultFont,
   primaryColor,
+  secondaryColor,
+  textColor,
+  bgColor,
   warningColor,
   dangerColor,
   successColor,
@@ -298,5 +333,7 @@ export {
   title,
   cardTitle,
   cardSubtitle,
-  cardLink
+  cardLink,
+  themeDarkOne,
+  themeDarkTwo
 };

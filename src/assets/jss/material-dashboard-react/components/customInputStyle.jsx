@@ -3,7 +3,8 @@ import {
   dangerColor,
   successColor,
   grayColor,
-  defaultFont
+  defaultFont,
+  themeDarkOne
 } from "assets/jss/material-dashboard-react.jsx";
 
 const customInputStyle = {
@@ -14,11 +15,11 @@ const customInputStyle = {
   },
   underline: {
     "&:hover:not($disabled):before,&:before": {
-      borderColor: grayColor[4] + " !important",
+      borderColor: themeDarkOne.textColor[4] + " !important",
       borderWidth: "1px !important"
     },
     "&:after": {
-      borderColor: primaryColor[0]
+      borderColor: themeDarkOne.textColor[0]
     }
   },
   underlineError: {
@@ -33,7 +34,7 @@ const customInputStyle = {
   },
   labelRoot: {
     ...defaultFont,
-    color: grayColor[3] + " !important",
+    color: themeDarkOne.textColor[3] + " !important",
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "1.42857"

@@ -1,5 +1,6 @@
 import {
   primaryColor,
+  secondaryColor,
   blackColor,
   hexToRgb
 } from "assets/jss/material-dashboard-react.jsx";
@@ -9,7 +10,7 @@ const checkboxAdnRadioStyle = {
     padding: "13px"
   },
   checked: {
-    color: primaryColor[0] + "!important"
+    color: secondaryColor[0] + "!important"
   },
   checkedIcon: {
     width: "20px",
@@ -25,12 +26,12 @@ const checkboxAdnRadioStyle = {
     borderRadius: "3px"
   },
   radio: {
-    color: primaryColor[0] + "!important"
+    color: secondaryColor[0] + "!important"
   },
   radioChecked: {
     width: "20px",
     height: "20px",
-    border: "1px solid " + primaryColor[0],
+    border: "1px solid " + secondaryColor[0],
     borderRadius: "50%"
   },
   radioUnchecked: {

@@ -2,6 +2,7 @@ import {
   defaultFont,
   container,
   primaryColor,
+  secondaryColor,
   grayColor
 } from "assets/jss/material-dashboard-react.jsx";
 
@@ -36,7 +37,7 @@ const footerStyle = {
   },
   container,
   a: {
-    color: primaryColor,
+    color: secondaryColor[0],
     textDecoration: "none",
     backgroundColor: "transparent"
   },

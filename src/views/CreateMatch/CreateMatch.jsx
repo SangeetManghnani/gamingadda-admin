@@ -32,10 +32,12 @@ import CustomMaterialInput from "components/CustomMaterialInput/CustomMaterialIn
 
 import CreateMatchSchema from "utils/CreateMatchValidation";
 import createMatchInDb from "utils/firebase/write";
+import { themeDarkOne } from "../../assets/jss/material-dashboard-react";
 
 const styles = {
   cardTitleWhite: {
-    color: "#FFFFFF",
+    color: themeDarkOne.primaryColor[0],
+    fontSize: "1.2rem",
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
@@ -47,12 +49,55 @@ const styles = {
     marginTop: "1rem"
   },
   gridMargin2: {
-    marginTop: "2rem"
+    marginTop: "2rem",
+    "& label": {
+      color: themeDarkOne.textColor[0] + " !important",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "1.42857"
+    },
+    "& .MuiInput-underline-408:after": {
+      borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
+    },
+    "& .MuiInput-underline-407:after": {
+      borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
+    },
+    "& input": {
+      color: themeDarkOne.textColor[0],
+      "& :after": {
+        borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
+      }
+    }
   },
   radioElement: {
     display: "flex",
     flexDirection: "row",
-    width: "100%"
+    width: "100%",
+    "& span": {
+      color: `${themeDarkOne.textColor[0]} !important`
+    }
+  },
+  datePickerElement: {
+    "& label": {
+      color: themeDarkOne.textColor[0] + " !important",
+      fontWeight: "400",
+      fontSize: "14px",
+      lineHeight: "1.42857"
+    },
+    // "& .MuiInput-underline-407": {
+    //   "& :hover": {
+    //     borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
+    //   }
+    // },
+    "& .MuiInput-underline-407:after": {
+      borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
+    },
+    "& input": {
+      color: themeDarkOne.textColor[0],
+      "& :after": {
+        borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
+      }
+    }
   }
 };
 
@@ -206,6 +251,7 @@ class CreateMatch extends React.Component {
                             name="dateTimeOfMatch"
                             value={values.dateTimeOfMatch}
                             component={DatePickerMaterial}
+                            className={classes.datePickerElement}
                           />
                         </GridItem>
                       </GridContainer>

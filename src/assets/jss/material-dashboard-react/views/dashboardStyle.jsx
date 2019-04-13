@@ -2,7 +2,8 @@ import {
   successColor,
   whiteColor,
   grayColor,
-  hexToRgb
+  hexToRgb,
+  themeDarkOne
 } from "assets/jss/material-dashboard-react.jsx";
 
 // const styles = theme => ({
@@ -11,7 +12,7 @@ import {
 //     backgroundImage: 'linear-gradient(45deg, #005C97, #2F80ED)',
 //     color: 'white',
 //   },
- 
+
 //   cover: {
 //     width: 151,
 //     backgroundPosition: '17% 10%',
@@ -26,7 +27,7 @@ import {
 //     height: 38,
 //     width: 38,
 //   },
- 
+
 // });
 const dashboardStyle = {
   successText: {
@@ -73,7 +74,9 @@ const dashboardStyle = {
     marginBottom: "0"
   },
   cardTitle: {
-    color: grayColor[2],
+    color: themeDarkOne.primaryColor[0],
+    fontSize: "0.875rem",
+    fontWeight: "600",
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
@@ -101,38 +104,38 @@ const dashboardStyle = {
     }
   },
   details: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column"
   },
   content: {
-    flex: '1 0 auto',
-    marginBottom: '0',
-    paddingBottom: '0',
+    flex: "1 0 auto",
+    marginBottom: "0",
+    paddingBottom: "0"
   },
   boldText: {
     fontWeight: 600,
-    fontSize: '1.2rem',
+    fontSize: "1.2rem"
   },
   dataColumns: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
   },
   middleRow: {
-    marginTop: '0.5rem',
+    marginTop: "0.5rem"
   },
   middleRowDetails: {
-    fontSize: '0.65rem',
+    fontSize: "0.65rem"
   },
   progress: {
-    margin: '1rem',
-    color: '#ffffff',
+    margin: "1rem",
+    color: "#ffffff"
   },
   button: {
-    margin: '0px',
-    backgroundImage: 'linear-gradient(90deg, #15988d, #0f9e45)',
-    backgroundColor: 'none !important',
+    margin: "0px",
+    backgroundImage: "linear-gradient(90deg, #15988d, #0f9e45)",
+    backgroundColor: "none !important"
   }
 };
 

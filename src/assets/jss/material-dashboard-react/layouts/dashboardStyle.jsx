@@ -1,7 +1,8 @@
 import {
   drawerWidth,
   transition,
-  container
+  container,
+  themeDarkOne
 } from "assets/jss/material-dashboard-react.jsx";
 
 const appStyle = theme => ({
@@ -20,7 +21,8 @@ const appStyle = theme => ({
     ...transition,
     maxHeight: "100%",
     width: "100%",
-    overflowScrolling: "touch"
+    overflowScrolling: "touch",
+    background: themeDarkOne.bgColor[0]
   },
   content: {
     marginTop: "70px",

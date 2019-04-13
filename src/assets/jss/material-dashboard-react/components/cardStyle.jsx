@@ -1,7 +1,8 @@
 import {
   blackColor,
   whiteColor,
-  hexToRgb
+  hexToRgb,
+  themeDarkOne
 } from "assets/jss/material-dashboard-react.jsx";
 
 const cardStyle = {
@@ -10,8 +11,8 @@ const cardStyle = {
     marginBottom: "15px",
     marginTop: "15px",
     borderRadius: "6px",
-    color: "rgba(" + hexToRgb(blackColor) + ", 0.87)",
-    background: whiteColor,
+    color: "rgba(" + hexToRgb(whiteColor) + ", 0.87)",
+    background: themeDarkOne.primaryColor[0],
     width: "100%",
     boxShadow: "0 1px 4px 0 rgba(" + hexToRgb(blackColor) + ", 0.14)",
     position: "relative",
@@ -19,7 +20,8 @@ const cardStyle = {
     flexDirection: "column",
     minWidth: "0",
     wordWrap: "break-word",
-    fontSize: ".875rem"
+    fontSize: ".875rem",
+    border: `1px solid ${themeDarkOne.borderColor[0]}`
   },
   cardPlain: {
     background: "transparent",

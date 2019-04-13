@@ -8,7 +8,8 @@ import {
   warningColor,
   dangerColor,
   whiteColor,
-  grayColor
+  grayColor,
+  themeDarkOne
 } from "assets/jss/material-dashboard-react.jsx";
 
 const headerStyle = theme => ({
@@ -21,7 +22,7 @@ const headerStyle = theme => ({
     width: "100%",
     paddingTop: "10px",
     zIndex: "1029",
-    color: grayColor[7],
+    color: themeDarkOne.primaryColor[0],
     border: "0",
     borderRadius: "3px",
     padding: "10px 0",
@@ -39,7 +40,8 @@ const headerStyle = theme => ({
   title: {
     ...defaultFont,
     lineHeight: "30px",
-    fontSize: "18px",
+    fontSize: "1.2rem",
+    fontWeight: "300",
     borderRadius: "3px",
     textTransform: "none",
     color: "inherit",

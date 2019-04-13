@@ -11,7 +11,6 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import Navbar from "components/Navbars/Navbar.jsx";
-import Footer from "components/Footer/Footer.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
 
 import routes from "routes.js";
@@ -145,7 +144,7 @@ class Dashboard extends React.Component {
               <div className={classes.container}>{switchRoutes("")}</div>
             )}
           </div>
-          {this.getRoute() ? <Footer /> : null}
+          {/* {this.getRoute() ? <Footer /> : null} */}
         </div>
       </div>
     );
