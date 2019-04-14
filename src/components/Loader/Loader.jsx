@@ -46,8 +46,8 @@ function Loader({ ...props }) {
       {/* <CircularProgress color="primary" /> */}
       <Lottie
         options={defaultOptions}
-        height={400}
-        width={400}
+        height={200}
+        width={200}
         isStopped={false}
         isPaused={false}
       />

@@ -8,6 +8,7 @@ import {
   grayColor,
   defaultFont
 } from "assets/jss/material-dashboard-react.jsx";
+import { themeDarkOne } from "../../material-dashboard-react";
 
 const tableStyle = theme => ({
   warningTableHeader: {
@@ -48,12 +49,16 @@ const tableStyle = theme => ({
     ...defaultFont,
     lineHeight: "1.42857143",
     padding: "12px 8px",
-    verticalAlign: "middle"
+    verticalAlign: "middle",
+    color: `${themeDarkOne.textColor[0]} !important`
   },
   tableResponsive: {
     width: "100%",
     marginTop: theme.spacing.unit * 3,
     overflowX: "auto"
+  },
+  "& .MuiTableCell-root-502": {
+    borderBottom: "none !important"
   }
 });
 
