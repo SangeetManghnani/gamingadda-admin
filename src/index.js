@@ -23,8 +23,16 @@ const theme = createMuiTheme({
     MuiInput: {
       underline: {
         "&:before": {
-          borderBottom: `1px solid ${orange}`
+          borderBottom: `1px solid #d6d6d6`
+        },
+        "&:hover": {
+          borderBottom: `1px solid #d6d6d6`
         }
+      }
+    },
+    MuiTableRow: {
+      "& td": {
+        borderBottom: "none"
       }
     }
   }

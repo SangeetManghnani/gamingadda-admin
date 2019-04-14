@@ -60,11 +60,11 @@ class CardDetails extends React.Component {
                 tableHeaderColor="#ffffff"
                 tableHead={["Name", "Kills", "Rank", "PayTM Amount"]}
                 tableData={[
-                  ["Dakota Rice"],
-                  ["Minerva Hooper"],
-                  ["Sage Rodriguez"],
-                  ["Philip Chaney"],
-                  ["Doris Greene"]
+                  ["Player 1"],
+                  ["Player 2"],
+                  ["Player 3"],
+                  ["Player 4"],
+                  ["Player 5"]
                 ]}
               />
             </CardBody>

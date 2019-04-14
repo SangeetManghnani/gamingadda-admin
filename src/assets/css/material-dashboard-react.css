@@ -529,3 +529,7 @@ input:-webkit-autofill {
 input:-internal-autofill-selected {
     background-color: transparent !important;
 }
+
+table tbody tr td {
+    border-bottom: none !important;
+}
