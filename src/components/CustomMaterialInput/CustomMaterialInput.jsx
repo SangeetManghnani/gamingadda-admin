@@ -26,6 +26,7 @@ function CustomMaterialInput(props: TextFieldProps) {
       {...fieldToTextField(props)}
       className={classes.customMaterialInput}
       fullWidth
+      placeholder={props.placeholder}
     />
   );
 }

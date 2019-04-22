@@ -3,6 +3,17 @@ import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Lottie from "react-lottie";
+import animationData from "../../utils/animations/loader.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
 
 const styles = {
   overlay: {
@@ -32,7 +43,14 @@ function Loader({ ...props }) {
 
   return (
     <div className={classes.overlay}>
-      <CircularProgress color="primary" />
+      {/* <CircularProgress color="primary" /> */}
+      <Lottie
+        options={defaultOptions}
+        height={200}
+        width={200}
+        isStopped={false}
+        isPaused={false}
+      />
     </div>
   );
 }

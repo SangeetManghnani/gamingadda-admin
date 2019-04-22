@@ -16,7 +16,7 @@ import Sidebar from "components/Sidebar/Sidebar.jsx";
 import routes from "routes.js";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
-
+import LoginPage from "views/Login/LoginPage.jsx";
 // side bar image change here
 import image from "assets/img/pubg_bg.jpg";
 // import logo from "assets/img/reactlogo.png";
@@ -75,7 +75,8 @@ class Dashboard extends React.Component {
       color: "orange",
       hasImage: true,
       fixedClasses: "dropdown show",
-      mobileOpen: false
+      mobileOpen: false,
+      isLoggedIn: true
     };
   }
   handleDrawerToggle = () => {
@@ -104,7 +105,6 @@ class Dashboard extends React.Component {
     // });
   }
   componentDidUpdate(e) {
-    console.log(this.props.matches);
     if (e.history.location.pathname !== e.location.pathname) {
       this.refs.mainPanel.scrollTop = 0;
       if (this.state.mobileOpen) {
@@ -119,33 +119,38 @@ class Dashboard extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div className={classes.wrapper}>
-        <Sidebar
-          routes={routes}
-          logo={logo}
-          image={this.state.image}
-          handleDrawerToggle={this.handleDrawerToggle}
-          open={this.state.mobileOpen}
-          color={this.state.color}
-          {...rest}
-        />
-        <div className={classes.mainPanel} ref="mainPanel">
-          <Navbar
-            routes={routes}
-            handleDrawerToggle={this.handleDrawerToggle}
-            {...rest}
-          />
-          {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-          <div className={classes.content}>
-            {this.isMatches ? (
-              <div className={classes.container}>
-                {switchRoutes(this.state.matches)}
+        {this.state.isLoggedIn ? (
+          <div classed="logged-in-content">
+            <Sidebar
+              routes={routes}
+              logo={logo}
+              image={this.state.image}
+              handleDrawerToggle={this.handleDrawerToggle}
+              open={this.state.mobileOpen}
+              color={this.state.color}
+              {...rest}
+            />
+            <div className={classes.mainPanel} ref="mainPanel">
+              <Navbar
+                routes={routes}
+                handleDrawerToggle={this.handleDrawerToggle}
+                {...rest}
+              />
+              <div className={classes.content}>
+                {this.isMatches ? (
+                  <div className={classes.container}>
+                    {switchRoutes(this.state.matches)}
+                  </div>
+                ) : (
+                  <div className={classes.container}>{switchRoutes("")}</div>
+                )}
               </div>
-            ) : (
-              <div className={classes.container}>{switchRoutes("")}</div>
-            )}
+              {/* {this.getRoute() ? <Footer /> : null} */}
+            </div>
           </div>
-          {/* {this.getRoute() ? <Footer /> : null} */}
-        </div>
+        ) : (
+          <LoginPage />
+        )}
       </div>
     );
   }

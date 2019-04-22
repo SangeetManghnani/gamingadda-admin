@@ -11,14 +11,30 @@ import { Provider } from "react-redux";
 import configureStore from "./store";
 
 // core components
-import Admin from "layouts/Admin.jsx";
+import RootPage from "views/Root/RootPage.jsx";
 
 import "assets/css/material-dashboard-react.css";
-
 const theme = createMuiTheme({
   palette: {
     primary: purple,
     secondary: orange
+  },
+  overrides: {
+    MuiInput: {
+      underline: {
+        "&:before": {
+          borderBottom: `1px solid #d6d6d6`
+        },
+        "&:hover": {
+          borderBottom: `1px solid #d6d6d6`
+        }
+      }
+    },
+    MuiTableRow: {
+      "& td": {
+        borderBottom: "none"
+      }
+    }
   }
 });
 const hist = createBrowserHistory();
@@ -29,8 +45,8 @@ ReactDOM.render(
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Router history={hist}>
           <Switch>
-            <Route path="/admin" component={Admin} />
-            <Redirect from="/" to="/admin/matches" />
+            <Route path="/" component={RootPage} />
+            <Redirect from="/*" to="/" />
           </Switch>
         </Router>
       </MuiPickersUtilsProvider>

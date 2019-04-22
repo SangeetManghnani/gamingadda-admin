@@ -21,6 +21,12 @@ const customMaterialInputStyle = {
     //     borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
     //   }
     // },
+    "& .MuiInput-root-527:before": {
+      borderBottom: `1px solid ${themeDarkOne.textColor[0]} !important`
+    },
+    "& .MuiInputBase-root-551:before": {
+      borderBottom: `1px solid ${themeDarkOne.textColor[0]} !important`
+    },
     "& .MuiInput-underline-407:after": {
       borderBottom: `2px solid ${themeDarkOne.textColor[0]}`
     },

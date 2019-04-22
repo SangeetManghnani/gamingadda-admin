@@ -24,6 +24,8 @@ import { setMatches, setLoadingMatches } from "redux/actions/MatchActions";
 
 import getMatchesFromDb from "utils/firebase/read";
 
+import CardDetails from "../CardDetails/CardDetails";
+
 function mapStateToProps(state) {
   return {
     matches: state.matchesReducer.matches,
@@ -37,7 +39,9 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0
+      value: 0,
+      isMatchSelected: false,
+      selectedMatch: {}
     };
 
     this.renderMatchCards = this.renderMatchCards.bind(this);
@@ -57,13 +61,19 @@ class Dashboard extends React.Component {
   handleChangeIndex = index => {
     this.setState({ value: index });
   };
+  renderMatchDetails = match => {
+    this.setState({
+      isMatchSelected: true,
+      selectedMatch: match
+    });
+  };
   renderMatchCards = classes => {
     const matches = [];
     this.props.matches.map(match => {
       const matchDetails = match.matchDetails;
       matches.push(
         <GridItem xs={12} sm={6} md={6}>
-          <Card>
+          <Card onClick={() => this.renderMatchDetails(match)}>
             <CardHeader color="warning" stats icon>
               <p className={classes.cardCategory}>Match id: {match.matchId}</p>
             </CardHeader>
@@ -136,7 +146,11 @@ class Dashboard extends React.Component {
     return (
       <div>
         {this.props.loadingMatches ? <Loader /> : null}
-        <GridContainer>{this.renderMatchCards(classes)}</GridContainer>
+        {this.state.isMatchSelected ? (
+          <CardDetails selectedMatch={this.state.selectedMatch} />
+        ) : (
+          <GridContainer>{this.renderMatchCards(classes)}</GridContainer>
+        )}
       </div>
     );
   }
