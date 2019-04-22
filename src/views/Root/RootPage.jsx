@@ -13,6 +13,8 @@ import Dashboard from "layouts/Admin.jsx";
 import LoginPage from "views/Login/LoginPage.jsx";
 import ProtectedRoute from "components/ProtectedRoute.jsx";
 
+import CookiesFunc from "utils/cookies.js";
+
 function mapStateToProps(state) {
   return {
     isLoggedIn: state.loginReducer.loginStatus
@@ -33,13 +35,18 @@ class RootPage extends React.Component {
     super(props);
   }
   componentDidMount() {
-    if (
-      localStorage.getItem("isGamingAddaAdminLoggedIn") &&
-      !this.props.isLoggedIn
-    ) {
+    const loginCookie = CookiesFunc.getCookie("isGamingAddaAdminLoggedIn");
+    if (loginCookie && !this.props.isLoggedIn) {
       this.props.setAdminLoginStatus(true);
       this.props.history.push("/admin/matches");
     }
+    // if (
+    //   localStorage.getItem("isGamingAddaAdminLoggedIn") &&
+    //   !this.props.isLoggedIn
+    // ) {
+    //   this.props.setAdminLoginStatus(true);
+    //   this.props.history.push("/admin/matches");
+    // }
   }
   renderDashboard = () => {
     let toRender = "";

@@ -13,6 +13,8 @@ import {
 // move this to redux
 import firebase from "utils/firebase/setup.js";
 
+import CookiesFunc from "utils/cookies.js";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -113,7 +115,8 @@ function LoginPage(props) {
                 .then(user => {
                   props.setAdminLoginStatus(true);
                   props.isAdminLogingIn(false);
-                  localStorage.setItem("isGamingAddaAdminLoggedIn", true);
+                  CookiesFunc.setCookie("isGamingAddaAdminLoggedIn", true);
+                  // localStorage.setItem("isGamingAddaAdminLoggedIn", true);
                   props.history.push("/admin/matches");
                 })
                 .catch(error => {
